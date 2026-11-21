@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodeConnect - Sign Up</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    color: white;
+    background:
+        radial-gradient(circle at 5% 5%, #a900ff 0, transparent 22%),
+        radial-gradient(circle at 95% 25%, #005eff 0, transparent 25%),
+        radial-gradient(circle at 5% 95%, #006bff 0, transparent 22%),
+        linear-gradient(145deg, #030626, #090c42 55%, #020b2c);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 35px 15px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Decorative background shapes */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    filter: blur(2px);
+    opacity: .65;
+    pointer-events: none;
+}
+
+body::before {
+    top: -120px;
+    left: -100px;
+    background: linear-gradient(135deg, #ff35ef, #353cff);
+}
+
+body::after {
+    bottom: -140px;
+    right: -90px;
+    background: linear-gradient(135deg, #00caff, #a000ff);
+}
+
+.container {
+    width: 100%;
+    max-width: 470px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Branding */
+.brand {
+    margin-bottom: 35px;
+}
+
+.logo {
+    width: 125px;
+    height: 125px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #ec20ff, #164dff, #00d9ff);
+    box-shadow: 0 0 35px #702cff;
+    border: 2px solid #8dcbff;
+}
+
+.brand h1 {
+    font-size: clamp(34px, 8vw, 48px);
+    font-weight: 800;
+    letter-spacing: -2px;
+}
+
+.brand h1 span {
+    background: linear-gradient(90deg, #e72cff, #00cfff);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.brand p {
+    margin-top: 10px;
+    font-size: 17px;
+    color: #d2d4ff;
+}
+
+/* Signup card */
+.signup-card {
+    padding: 35px 28px 30px;
+    border-radius: 30px;
+    background: rgba(15, 23, 82, .83);
+    border: 2px solid #7865ff;
+    box-shadow:
+        0 0 15px #784bff,
+        0 0 35px rgba(0, 174, 255, .35),
+        inset 0 0 25px rgba(91, 80, 255, .13);
+    backdrop-filter: blur(18px);
+}
+
+.signup-card h2 {
+    font-size: 34px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #c4c8ff;
+    font-size: 18px;
+    margin-bottom: 28px;
+}
+
+.heading-line {
+    width: 45%;
+    height: 3px;
+    margin: 0 auto 28px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #b400ff, #00d9ff);
+}
+
+/* Input fields */
+.input-box {
+    width: 100%;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 0 18px;
+    border: 2px solid #514ba9;
+    border-radius: 40px;
+    background: rgba(91, 94, 178, .25);
+    transition: .3s;
+}
+
+.input-box:focus-within {
+    border-color: #00cfff;
+    box-shadow: 0 0 15px rgba(0, 190, 255, .3);
+}
+
+.input-box .field-icon {
+    font-size: 24px;
+    width: 42px;
+    text-align: left;
+    color: white;
+}
+
+.input-box input {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 17px;
+    padding: 10px 8px;
+}
+
+.input-box input::placeholder {
+    color: #c7c9ee;
+}
+
+.toggle-password {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 21px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.helper-text {
+    color: #d2d5ff;
+    font-size: 13px;
+    margin: -9px 0 20px;
+}
+
+/* Signup button */
+.signup-btn {
+    width: 100%;
+    height: 65px;
+    border: none;
+    border-radius: 45px;
+    background: linear-gradient(100deg, #e000ff, #473bff, #00d5ff);
+    color: white;
+    font-size: 21px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 7px 18px rgba(0, 0, 0, .35),
+                0 0 20px rgba(128, 48, 255, .5);
+    transition: .3s;
+}
+
+.signup-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 28px #6b45ff;
+}
+
+/* OR divider */
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 25px 0 20px;
+    color: white;
+    font-size: 17px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: #514caa;
+}
+
+/* Google button */
+.google-btn {
+    width: 100%;
+    height: 60px;
+    border: none;
+    border-radius: 40px;
+    background: white;
+    color: #111638;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.google-icon {
+    font-size: 27px;
+    font-weight: bold;
+    background: conic-gradient(
+        #4285F4 0deg 90deg,
+        #34A853 90deg 180deg,
+        #FBBC05 180deg 260deg,
+        #EA4335 260deg 360deg
+    );
+    color: transparent;
+    background-clip: text;
+}
+
+/* Terms */
+.terms {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 25px;
+    color: #e0e1ff;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.terms input {
+    width: 20px;
+    height: 20px;
+    accent-color: #a500ff;
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+a {
+    color: #d12bff;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+/* Login link */
+.login-link {
+    margin-top: 28px;
+    font-size: 16px;
+    color: #e1e1ff;
+}
+
+.login-link a {
+    margin-left: 8px;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.message {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #ffb7e9;
+}
+
+@media(max-width: 380px) {
+    .signup-card {
+        padding: 28px 18px;
+    }
+
+    .signup-card h2 {
+        font-size: 28px;
+    }
+
+    .input-box {
+        height: 56px;
+    }
+
+    .brand p {
+        font-size: 14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- BRANDING SECTION -->
+    <div class="brand">
+        <div class="logo">&lt;/&gt;</div>
+
+        <h1>Code<span>Connect</span></h1>
+
+        <p>Create. Connect. Customize.</p>
+    </div>
+
+    <!-- SIGNUP SECTION -->
+    <div class="signup-card">
+
+        <h2>Create Account</h2>
+
+        <p class="subtitle">
+            Join our creative community
+        </p>
+
+        <div class="heading-line"></div>
+
+        <form id="signupForm">
+
+            <!-- Username -->
+            <div class="input-box">
+                <span class="field-icon">♙</span>
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Username"
+                    required
+                    minlength="3"
+                >
+            </div>
+
+            <!-- Password -->
+            <div class="input-box">
+                <span class="field-icon">♙</span>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    required
+                    minlength="8"
+                >
+                <button
+                    type="button"
+                    class="toggle-password"
+                    onclick="togglePassword('password', this)"
+                    aria-label="Show password"
+                >◉</button>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="input-box">
+                <span class="field-icon">♙</span>
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm Password"
+                    required
+                >
+                <button
+                    type="button"
+                    class="toggle-password"
+                    onclick="togglePassword('confirmPassword', this)"
+                    aria-label="Show confirm password"
+                >◉</button>
+            </div>
+
+            <!-- Email or Mobile -->
+            <div class="input-box">
+                <span class="field-icon">✉</span>
+                <input
+                    type="text"
+                    id="contact"
+                    placeholder="Mobile Number or Email ID"
+                    required
+                >
+            </div>
+
+            <p class="helper-text">
+                We'll send a verification code
+            </p>
+
+            <!-- Signup button -->
+            <button type="submit" class="signup-btn">
+                ♙+ &nbsp; Sign Up
+            </button>
+
+        </form>
+
+        <div class="divider">OR</div>
+
+        <!-- Google signup -->
+        <button class="google-btn" onclick="googleSignup()">
+            <span class="google-icon">G</span>
+            Continue with Google
+        </button>
+
+        <!-- Terms -->
+        <div class="terms">
+            <input type="checkbox" id="agree">
+
+            <label for="agree">
+                I agree to the
+                <a href="#">Terms & Conditions</a>
+                and
+                <a href="#">Privacy Policy</a>
+            </label>
+        </div>
+
+        <p class="message" id="message"></p>
+
+    </div>
+
+    <!-- LOGIN LINK -->
+    <div class="login-link">
+        Already have an account?
+        <a href="codeconnect.html">Login ❯</a>
+    </div>
+
+</div>
+
+<script>
+
+// Show or hide password
+function togglePassword(id, button) {
+
+    const field = document.getElementById(id);
+
+    if (field.type === "password") {
+        field.type = "text";
+        button.textContent = "◉";
+    } else {
+        field.type = "password";
+        button.textContent = "◉";
+    }
+}
+
+// Form validation
+document.getElementById("signupForm").addEventListener("submit",
+function(event) {
+
+    event.preventDefault();
+
+    const username =
+        document.getElementById("username").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+    const contact =
+        document.getElementById("contact").value.trim();
+
+    const agree =
+        document.getElementById("agree").checked;
+
+    const message =
+        document.getElementById("message");
+
+    if (username.length < 3) {
+        message.textContent =
+            "Username must contain at least 3 characters.";
+        return;
+    }
+
+    if (password.length < 8) {
+        message.textContent =
+            "Password must contain at least 8 characters.";
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        message.textContent =
+            "Passwords do not match!";
+        return;
+    }
+
+    if (!contact) {
+        message.textContent =
+            "Please enter your email or mobile number.";
+        return;
+    }
+
+    if (!agree) {
+        message.textContent =
+            "Please accept the Terms and Privacy Policy.";
+        return;
+    }
+
+    message.textContent =
+        "Details validated! Connect Supabase to send your OTP.";
+
+});
+
+// Google signup placeholder
+function googleSignup() {
+    alert("Google authentication will be connected through Supabase.");
+}
+
+</script>
+
+</body>
+</html>

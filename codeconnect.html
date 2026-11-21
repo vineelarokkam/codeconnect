@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodeConnect | Login</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 15px;
+    color: white;
+    background:
+        radial-gradient(circle at 15% 20%, #39217c 0, transparent 35%),
+        radial-gradient(circle at 85% 80%, #123e78 0, transparent 35%),
+        linear-gradient(135deg, #080b20, #17112f, #071b35);
+}
+
+.container {
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+}
+
+/* Logo section */
+.logo {
+    margin-bottom: 35px;
+}
+
+.logo-icon {
+    font-size: 42px;
+    margin-bottom: 10px;
+    color: #a78bfa;
+}
+
+.logo h1 {
+    font-size: 32px;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #a78bfa, #60a5fa);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.logo p {
+    color: #b8b8d0;
+    font-size: 13px;
+    margin-top: 8px;
+    letter-spacing: 1px;
+}
+
+/* Login card */
+.login-card {
+    padding: 35px 28px;
+    border-radius: 22px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 15px 45px rgba(0,0,0,0.35);
+    backdrop-filter: blur(18px);
+}
+
+.login-card h2 {
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: #b8b8d0;
+    margin-bottom: 28px;
+}
+
+.input-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 8px;
+    color: #dedaf5;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(10,12,35,0.7);
+    color: white;
+    outline: none;
+    font-size: 14px;
+}
+
+.input-group input:focus {
+    border-color: #9b7cff;
+    box-shadow: 0 0 10px rgba(155,124,255,0.3);
+}
+
+.forgot {
+    display: block;
+    text-align: right;
+    color: #a78bfa;
+    text-decoration: none;
+    font-size: 12px;
+    margin: 5px 0 22px;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background: linear-gradient(90deg, #7955e8, #397ce8);
+    box-shadow: 0 5px 18px rgba(91,90,230,0.3);
+}
+
+.login-btn:hover {
+    opacity: 0.9;
+}
+
+.signup {
+    margin-top: 22px;
+    font-size: 13px;
+    color: #c4c4d8;
+}
+
+.signup a {
+    color: #a78bfa;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Footer section */
+.footer {
+    margin-top: 35px;
+    font-size: 11px;
+    color: #9292ad;
+    line-height: 2.2;
+}
+
+.footer a {
+    color: #aaa5d0;
+    text-decoration: none;
+    margin: 0 6px;
+}
+
+.footer a:hover,
+.signup a:hover,
+.forgot:hover {
+    color: white;
+}
+
+@media (max-width: 380px) {
+    .login-card {
+        padding: 28px 20px;
+    }
+
+    .logo h1 {
+        font-size: 28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- TOP SECTION -->
+    <div class="logo">
+        <div class="logo-icon">⌘</div>
+        <h1>CodeConnect</h1>
+        <p>Create. Connect. Customize.</p>
+    </div>
+
+    <!-- MIDDLE SECTION -->
+    <div class="login-card">
+        <h2>Welcome Back!</h2>
+        <p class="subtitle">Login to continue your journey</p>
+
+        <form id="loginForm">
+
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter your username"
+                    required
+                >
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required
+                >
+            </div>
+
+            <a href="#" class="forgot"
+               onclick="forgotPassword(event)">
+                Forgot Password?
+            </a>
+
+            <button type="submit" class="login-btn">
+                Login
+            </button>
+
+        </form>
+
+        <div class="signup">
+            New to CodeConnect?
+            <a href="signup.html">Sign Up</a>
+        </div>
+    </div>
+
+    <!-- BOTTOM SECTION -->
+    <div class="footer">
+        <a href="#">Terms & Conditions</a> |
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Help</a> |
+        <a href="#">About Us</a>
+        <p>© 2026 CodeConnect. All rights reserved.</p>
+    </div>
+
+</div>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value;
+
+    if (!username || !password) {
+        alert("Please enter your username and password.");
+        return;
+    }
+
+    alert("Login UI is working! Backend authentication needs to be connected.");
+});
+
+function forgotPassword(event) {
+    event.preventDefault();
+    alert("Password recovery will be connected soon.");
+}
+</script>
+
+</body>
+</html>
